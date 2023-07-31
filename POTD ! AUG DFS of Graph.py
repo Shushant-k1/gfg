@@ -1,19 +1,15 @@
-def dfsOfGraph(self, V, adj):
-        # code here
-        visited = [False] * V
-        res = []
-        def dfs(at):
-            if visited[at]:
-                return
-            else:
-                visited[at] = True
-                res.append(at)
-                
-            nxt_nodes = adj[at]
-            
-            for nxt in nxt_nodes:
-                dfs(nxt)
+class Solution:
+    def __init__(self):
+        self.l=[]
+   
+    def dfsOfGraph(self, V, adj):
+        visited=[0 for i in range(V)]
         
-        start_node = 0
-        dfs(start_node)
-        return res
+        self.ccc(V,adj,visited,0)
+        return self.l
+    def ccc(self,V,adj,visited,k):
+        visited[k]=1
+        self.l.append(k)
+        for i in adj[k]:
+            if visited[i]==0:
+                self.ccc(V,adj,visited,i)
